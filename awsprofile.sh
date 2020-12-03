@@ -21,7 +21,7 @@ BW_SESSION=$(bw unlock --raw)
 VALUES=$(bw list items --session $BW_SESSION --search $PROFILE | jq -r .[0])
 [ "$VALUES" == null ] && resolve "Invalid profile." && return
 
-resolve "Success! Connected on profile: [$AWS_ACCESS_KEY_ID] $PROFILE" \
+resolve "Success! Connected on profile: $PROFILE" \
   $(echo $VALUES | jq -r .login.username) \
   $(echo $VALUES | jq -r .login.password) \
   $(echo $VALUES | jq -r .fields[0].value)
