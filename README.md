@@ -1,6 +1,6 @@
 # AWS-BITWARDEN
 
-Script para conectar na AWS através das credenciais armazenadas em um cofre do bitwarden.
+Script para conectar na AWS utilizando profiles através das credenciais armazenadas em um cofre do bitwarden.
 
 ## Pre-requisitos
 
@@ -10,18 +10,18 @@ Script para conectar na AWS através das credenciais armazenadas em um cofre do 
 <img src="./img/aws-profile.png">
 
 Onde:
-  - Profile: Nome do item no cofre
+  - Profile: Nome do item no cofre - aws-default
   - `AWS_ACCESS_KEY_ID=Username`
   - `AWS_SECRET_ACCESS_KEY=Password`
   - `AWS_DEFAULT_REGION=[region value]`
 
-## Como executar
+## Para iniciar uso
 
 ```
   $ gh repo clone swirfneblin/aws-bitwarden
   $ cd aws-bitwarden
-  $ mv awsprofile.sh /usr/local/bin
+  $ make
 ```
-```
-  $ source awsprofile.sh aws-default
-```
+Então execute:
+
+`$ source awsprofile.sh aws-default`
