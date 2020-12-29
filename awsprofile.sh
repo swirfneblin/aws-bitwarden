@@ -18,10 +18,10 @@ PROFILE=$1
 BW_SESSION=$(bw unlock --raw)
 [ $? -ne 0 ] && return
 
-VALUES=$(bw list items --session $BW_SESSION --search $PROFILE | jq -r .[0])
-[ "$VALUES" == null ] && resolve "Invalid profile." && return
+VALUES=$(bw list items --session $BW_SESSION --search $PROFILE | jq -r '.[0]')
+[ -z "$VALUES" ] && resolve "Invalid profile." && return
 
 resolve "Success! Connected on profile: $PROFILE" \
   $(echo $VALUES | jq -r .login.username) \
   $(echo $VALUES | jq -r .login.password) \
-  $(echo $VALUES | jq -r .fields[0].value)
+  $(echo $VALUES | jq -r '.fields[0].value')
